@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+    <meta name="og:site_name" content="cleveranomaly's website" />
+    <meta name="og:title" content="index" />
+    <meta name="og:description" content="the world's somewhat anomalous website." />
+    <meta name="description" content="the world's somewhat anomalous website." />
+
+    <title>index page</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js">/* GFM parser */</script>
+    <script src="./static/js/anomalousstylescript.js">/* anomalous stylescript */</script>
+
+    <style>#user_info h1{text-align:center;}</style>
+
+    <script>
+      let uinfo_text = fetch('https://raw.githubusercontent.com/cleveranomaly/cleveranomaly/main/README.md')
+      .then(res => res.text().then(v => document.getElementById('user_info').innerHTML = marked(v))).catch(err => uinfo_text = err);
+    </script>
+  </head>
+
+  <body class="bg(#101052) ff(Roboto-Mono,Inconsolata,Lucida-Console,Consolas,monospace) m(0)" style="opacity: 0;" onload="load()">
+    <div class="bg(#191980) fg(#f0f1f2) d(bl) ta(c) t(0) pos(s) fw(800) fs(1.1rem) jc(c) p(10px,10%)">
+      <a class="fg(#93cdef) hov:fg(#edcf00) d(inbl) px(20px) ts(color,300ms,eio)" href="/">
+        home
+      </a>
+      <a class="fg(#93cdef) hov:fg(#edcf00) d(inbl) px(20px) ts(color,300ms,eio)" href="https://discord.gg/NackdnZpm4">
+        discord community
+      </a>
+    </div>
+
+    <div id="content">
+      <div class="bg(#101052) fg(#f0f1f2)">
+        <div class="d(fl) jc(c) p(1%,10%)"><div id="user_info" class="fs(1.2rem) fw(500)" onload="fetch_uinfo()"></div></div>
+      </div>
+
+      <div class="bg(#fafafa) fg(#101112) py(1%)">
+        <h1 class="fw(700) fs(2.5rem) ta(c)">featured projects</h1>
+
+        <div id="resources_wrap" class="px(10%)">
+          <div class="d(inline-grid) jc(c) md-gtc(40%,40%) lg-gtc(25%,25%,25%) ggap(2.5%) ta(c)">
+            <div class="bg(#283593) fg(#fafbfc) my(10px) p(5%)">
+              <header class="fs(1.4rem) fw(700) fg(#a5d6a7) hov:fg(#b2ebf2) pb(5px)">
+                <a class="fg(#80d8ff) hov:fg(#18ffff) ts(color,300ms,eio)" 
+                href="https://github.com/cleveranomaly/anomalousdocs">anomalous docs</a>
+              </header>
+              <span>
+                a collection of documents which cover various
+                topics, including, but not limited to programming
+                and coding topics, such as code style.
+              </span>
+            </div>
+            <div class="bg(#283593) fg(#fafbfc) my(10px) p(5%)">
+              <header class="fs(1.4rem) fw(700) fg(#a5d6a7) hov:fg(#b2ebf2) pb(5px)">
+                <a class="fg(#80d8ff) hov:fg(#18ffff) ts(color,300ms,eio)" 
+                href="https://github.com/cleveranomaly/simplemark">simplemark</a>
+              </header>
+              <span>
+                a simple markup language for the modern ages. aims 
+                to provide extensive styling while being simple.
+                provides a default styling system in <a class="fg(inherit) hov:fg(inherit)" 
+                href="https://github.com/cleveranomaly/stylemarker">stylemarker</a>.
+              </span>
+            </div>
+            <div class="bg(#283593) fg(#fafbfc) my(10px) p(5%)">
+              <header class="fs(1.4rem) fw(700) fg(#a5d6a7) hov:fg(#b2ebf2) pb(5px)">
+                <a class="fg(#80d8ff) hov:fg(#18ffff) ts(color,300ms,eio)" 
+                href="https://github.com/cleveranomaly/commondocs">commondocs</a>
+              </header>
+              <span>
+                a general documentation processor for various programming 
+                anguages. mainly focused on object-oriented programming, 
+                however highly generalized and extensible. 
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg(#101112) fg(#fafbfc) d(bl) p(15px,10%)">
+      <p class="fw(700) fs(1.1rem) ta(c) m(0)">made by cleveranomaly.</p>
+
+      <div id="user-references" class="ta(c) pt(10px)">
+        <a href="https://github.com/cleveranomaly"><img class="w(40px) h(40px) px(5px)" src="./static/png/github.png"></a>
+        <a href="https://reddit.com/u/cleveranomaly"><img class="w(40px) h(40px) px(5px)" src="./static/png/reddit.png"></a>
+      </div>
+    </div>
+  </body>
+</html>
