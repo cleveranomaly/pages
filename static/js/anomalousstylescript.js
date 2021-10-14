@@ -83,6 +83,7 @@ const load = (_map) => {
     },
 
     'gtc': { prop_name: 'grid-template-columns', transform: (s) => s.replaceAll(/\,/g, ' ') },
+    'gtr': { prop_name: 'grid-template-rows', transform: (s) => s.replaceAll(/\,/, ' ') },
     'ggap': { prop_name: 'grid-gap', transform: false },
 
     'ff': { prop_name: 'font-family', transform: (s) => s.replace(/\-/g, ' ') },
