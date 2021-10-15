@@ -83,7 +83,7 @@ const load = (_map) => {
     },
 
     'gtc': { prop_name: 'grid-template-columns', transform: (s) => s.replaceAll(/\,/g, ' ') },
-    'gtr': { prop_name: 'grid-template-rows', transform: (s) => s.replaceAll(/\,/, ' ') },
+    'gtr': { prop_name: 'grid-template-rows', transform: (s) => s.replaceAll(/\,/g, ' ') },
     'ggap': { prop_name: 'grid-gap', transform: false },
 
     'ff': { prop_name: 'font-family', transform: (s) => s.replace(/\-/g, ' ') },
@@ -136,10 +136,9 @@ const load = (_map) => {
     }
   };
 
-  let styleelement = document.createElement('style');
-  document.head.append(styleelement);
+  let styleelement = document.createElement('style'); document.head.append(styleelement);
   // Separate the prefix (h:p, mx, etc.) and the parameter (value)
-  const extract_value = (s) => [s.slice(0, s.indexOf('(')), s.slice(s.indexOf('(') + 1, s.lastIndexOf(')'))];
+  const extract_value = (s) => [s.slice(0, s.indexOf('>')), s.slice(s.indexOf('>') + 1)];
   // Escape out special characters
   const esc = (s) => { let v = s; '!@#$%^&*()_+-=[]{}|"\';:/.,<>'.split('').forEach(c => v = v.replaceAll(c, `\\${c}`)); return v; }
   const append_style = (s) => { if(!styleelement.innerHTML.includes(s)) { styleelement.innerHTML += s; return true; } else return false; }
@@ -153,24 +152,25 @@ const load = (_map) => {
   const style_element = async (e) => {
     if(e.className) e.className.split(/\s+/g).forEach(c => {
       let ev = extract_value(c);
-      for(let prop in map) if(ev[0].indexOf(prop) < c.indexOf('(') && ev[0].includes(prop)) {
-        var param = esc(ev[1]), prop_name = map[prop].prop_name, set = false, style_value;
-        if(map[prop].transform) style_value = map[prop].transform(ev[1]);
-        else style_value = ev[1];
+      for(let prop in map) if(ev[0].includes(prop) && ev[0].indexOf(prop) < c.indexOf('>')) {
+        var param = esc(ev[1]), prop_name = map[prop].prop_name, style_value 
+        = (map[prop].transform) ? map[prop].transform(ev[1]) : ev[1], set;
+
         let css = { 
-          pseudoelement: (pe, mapped) => `.${pe}\\:${prop}\\(${param}\\)${mapped}{${prop_name}:${style_value};}`,
-          width_bp: (bp, mapped) => `@media screen and (min-width: ${mapped}){.${bp}\\-${prop}\\(${param}\\){${prop_name}:${style_value};}}`,
-          normal: `.${prop}\\(${param}\\){${prop_name}:${style_value};}`
+          pseudoelement: (pe, mapped) => `.${pe}\\:${prop}\\>${param}${mapped}{${prop_name}:${style_value};}`,
+          width_bp: (bp, mapped) => `@media screen and (min-width: ${mapped}){.${bp}\\@${prop}\\>${param}{${prop_name}:${style_value};}}`,
+          normal: `.${prop}\\>${param}{${prop_name}:${style_value};}`
         };
-        console.log(ev[0])
+        
         for(let pe in settings.pseudoelements)
           if(ev[0].startsWith(pe + ':')) set = append_style(css.pseudoelement(pe, settings.pseudoelements[pe]));
         for(let bp in settings.width_breakpoints)
-          if(ev[0].startsWith(bp + '-')) set = append_style(css.width_bp(bp, settings.width_breakpoints[bp]));
+          if(ev[0].startsWith(bp + '@')) set = append_style(css.width_bp(bp, settings.width_breakpoints[bp]));
         if(!set) append_style(css.normal);
       }
     }); 
   };
+
   document.querySelectorAll('*').forEach(style_element); document.body.style.opacity = '1';
   new MutationObserver((m) => m.forEach(v => v.addedNodes.forEach(style_element))).observe(document.body, { attributes: true, childList: true, subtree: true });
 }
