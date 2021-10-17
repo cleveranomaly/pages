@@ -2,7 +2,7 @@ const load = (_map) => {
   let styleelement = document.createElement('style'); document.head.append(styleelement);
   // Separate the prefix (h:p, mx, etc.) and the parameter (value)
   const esc = (s) => { let v = s; '!@#$%^&*()_+-=[]{}|"\';:/.,<>'.split('').forEach(c => v = v.replaceAll(c, `\\${c}`)); return v; }
-  const append_style = (s) => { if(!styleelement.innerHTML.includes(s)) { styleelement.innerHTML += s; return true; } else return false; }
+  const append_style = (s) => { if(!styleelement.innerHTML.includes(s)) { styleelement.innerHTML += s + '}'; return true; } else return false; }
 
   const tf_to_space = (s) => s.replaceAll(/\,/g, ' ');
   const ff_tf_to_space = (s) => s.replaceAll(/\-/g, ' ');
@@ -68,13 +68,12 @@ const load = (_map) => {
   const style_element = async (e) => {
     if(e.className) e.className.split(/\s+/g).forEach(c => {
       let prop = c.slice(0, c.indexOf('>')), style_value = c.slice(c.indexOf('>') + 1), param = esc(style_value), 
-        got_prop = map_prop.get(prop), computed_css;
+        got_prop = map_prop.get(prop), computed_css = `.${prop}\\>${param}{`;
 
       if(got_prop) {
         style_value = (got_prop.transform) ? got_prop.transform(style_value, e) : style_value;
-        if(got_prop.css_name instanceof Array) { computed_css = `.${prop}\\>${param}{`; 
-          got_prop.css_name.forEach(s => computed_css += `${s}:${style_value};`); computed_css += '}';
-        } else computed_css = `.${prop}\\>${param}{${got_prop.css_name}:${style_value}}`;
+        if(got_prop.css_name instanceof Array) got_prop.css_name.forEach(s => computed_css += `${s}:${style_value};`);
+        else computed_css = `.${prop}\\>${param}{${got_prop.css_name}:${style_value}`;
 
         append_style(computed_css);
       }
@@ -83,4 +82,4 @@ const load = (_map) => {
 
   document.querySelectorAll('*').forEach(style_element); document.body.style.opacity = '1';
   new MutationObserver((m) => m.forEach(v => v.addedNodes.forEach(style_element))).observe(document.body, { attributes: true, childList: true, subtree: true });
-}
+};

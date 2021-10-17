@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet" crossorigin="anonymous" />
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js">/* GFM parser */</script>
     <script src="./static/js/anomalousstylescript.js">/* anomalous stylescript */</script>
+    <script></script>
 
     <style>#user_info h1{text-align:center;}</style>
 
@@ -24,24 +25,24 @@
     </script>
   </head>
 
-  <body class="bg>#101052 ff>Roboto-Mono,Inconsolata,Lucida-Console,Consolas,monospace m>0" style="opacity: 0;" onload="load()">
+  <body class="bg>#101052 ff>Roboto-Mono,monospace m>0" style="opacity:0;" onload="load()">
     <div class="bg>#050b6a fg>#f0f1f2 d>bl ta>c t>0 pos>s fw>800 fs>1.1rem jc>c p>10px,10%">
       <a class="fg>#93cdef hov:fg>#edcf00 d>inbl px>20px ts>color,300ms,ease-in-out" href="/">home</a>
       <a class="fg>#93cdef hov:fg>#edcf00 d>inbl px>20px ts>color,300ms,ease-in-out" href="https://discord.gg/NackdnZpm4">discord community</a>
     </div>
 
     <div id="content">
-      <div class="bg>#050b6a fg>#f0f1f2">
-        <div class="d>fl jc>c p>2%,10%"><div id="user_info" class="fs>1.2rem fw>500" onload="fetch_uinfo()"></div></div>
+      <div class="bg>#050b6a fg>#f0f1f2 py>2%">
+        <div class="d>fl jc>c"><div id="user_info" class="fs>1.2rem fw>500" onload="fetch_uinfo()"></div></div>
       </div>
 
       <div class="bg>#fafafa fg>#101112 py>2%">
         <h1 class="fw>700 fs>2.5rem ta>c">featured projects</h1>
 
         <div id="resources_wrap" class="p>1%,10%">
-          <div class="d>gr jc>c sm-gtc>90vw md@gtc>45vw,45vw lg@gtc>25vw,25vw,25vw ggap>2vw">
+          <div class="d>gr jc>c gtc>25vw,25vw,25vw sm@gtc>90vw md@gtc>45vw,45vw lg@gtc>25vw,25vw,25vw grid-gap>2vw">
             <div class="bg>#283593 fg>#fafbfc p>5%">
-              <header class="fs>1.4rem fw>700 ta>c fg>#a5d6a7 hov@fg>#b2ebf2 pb>5%">
+              <header class="fs>1.4rem fw>700 ta>c fg>#a5d6a7 hov:fg>#b2ebf2 pb>5%">
                 <a class="fg>#80d8ff hov:fg>#18ffff ts>color,300ms,ease-in-out" 
                 href="https://github.com/cleveranomaly/anomalousdocs">anomalous docs</a>
               </header>
