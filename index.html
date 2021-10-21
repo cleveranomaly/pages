@@ -13,82 +13,27 @@
     <title>index page</title>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet" crossorigin="anonymous" />
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js">/* GFM parser */</script>
-    <script src="./static/js/anomalousstylescript.js">/* anomalous stylescript */</script>
-
-    <style>#user_info h1{text-align:center;}</style>
-
-    <script>
-      let uinfo_text = fetch('https://raw.githubusercontent.com/cleveranomaly/cleveranomaly/main/README.md')
-      .then(res => res.text().then(v => document.getElementById('user_info').innerHTML = marked(v))).catch(err => uinfo_text = err);
-    </script>
+    <script src="./static/js/anomalousscript.js"></script>
   </head>
+  
+  <body class="ff>Roboto_Mono,monospace m>0">
+    <nav class="
+      d>fl jc>c gap>2% bg>#050b6a top>0 position>sticky
+      a^fw>700 a^fs>1.2rem a^fg>white hov:a^fg>yellow a^td>none a^ts>color_300ms_ease-in-out a^p>16px_0
+    ">
+      <a href="/">home</a>
+    </nav>
 
-  <body class="bg>#101052 ff>Roboto-Mono,Inconsolata,Lucida-Console,Consolas,monospace m>0" style="opacity: 0;" onload="load()">
-    <div class="bg>#050b6a fg>#f0f1f2 d>bl ta>c t>0 pos>s fw>800 fs>1.1rem jc>c p>10px,10%">
-      <a class="fg>#93cdef hov:fg>#edcf00 d>inbl px>20px ts>color,300ms,eio" href="/">
-        home
-      </a>
-      <a class="fg>#93cdef hov:fg>#edcf00 d>inbl px>20px ts>color,300ms,eio" href="https://discord.gg/NackdnZpm4">
-        discord community
-      </a>
+    <div class="bg>#4a3d79 fg>#fafbfc p>2%_10%">
+      
     </div>
 
-    <div id="content">
-      <div class="bg>#050b6a fg>#f0f1f2">
-        <div class="d>fl jc>c p>2%,10%"><div id="user_info" class="fs>1.2rem fw>500" onload="fetch_uinfo()"></div></div>
+    <footer class="d>bl bg>#050b6a fg>#f0f0f0 p>12px ta>c">
+      <p class="fw>500 m>0 p>8px_0">public domain (pd) cleveranomaly.</p>
+
+      <div class="d>fl jc>c gap>5% img^hov:border>1px_solid_yellow">
+        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png">
       </div>
-
-      <div class="bg>#fafafa fg>#101112 py>2%">
-        <h1 class="fw>700 fs>2.5rem ta>c">featured projects</h1>
-
-        <div id="resources_wrap" class="p>1%,10%">
-          <div class="d>grid jc>c sm-gtc>90vw md@gtc>45vw,45vw lg@gtc>25vw,25vw,25vw ggap>2vw">
-            <div class="bg>#283593 fg>#fafbfc p>5%">
-              <header class="fs>1.4rem fw>700 ta>c fg>#a5d6a7 hov@fg>#b2ebf2 pb>5%">
-                <a class="fg>#80d8ff hov:fg>#18ffff ts>color,300ms,eio" 
-                href="https://github.com/cleveranomaly/anomalousdocs">anomalous docs</a>
-              </header>
-              <span>
-                a collection of documents which cover various
-                topics, including, but not limited to programming
-                and coding topics, such as code style.
-              </span>
-            </div>
-            <div class="bg>#283593 fg>#fafbfc p>5%">
-              <header class="fs>1.4rem fw>700 ta>c fg>#a5d6a7 hov:fg>#b2ebf2 pb>5%">
-                <a class="fg>#80d8ff hov:fg>#18ffff ts>color,300ms,eio" href="https://github.com/cleveranomaly/simplemark">
-                <img class="w>1.4rem h>1.4rem p>2px,4px" style="vertical-align:sub" src="./static/svg/typescript.svg">simplemark</a>
-              </header>
-              <span>
-                a simple markup language for the modern ages. aims 
-                to provide extensive styling while being simple.
-                provides a default styling system in <u>stylemarker</u>.
-              </span>
-            </div>
-            <div class="bg>#283593 fg>#fafbfc p>5%">
-              <header class="fs>1.4rem fw>700 ta>c fg>#a5d6a7 hov:fg>#b2ebf2 pb>5%">
-                <a class="fg>#80d8ff hov:fg>#18ffff ts>color,300ms,eio" href="https://github.com/cleveranomaly/commondocs">
-                <img class="w>1.4rem h>1.4rem p>2px,4px" style="vertical-align:sub" src="./static/svg/typescript.svg">commondocs</a>
-              </header>
-              <span>
-                a general documentation processor for various programming 
-                anguages. mainly focused on object-oriented programming, 
-                however highly generalized and extensible. 
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="bg>#101112 fg>#fafbfc d>bl p>16px,10%">
-      <p class="fw>700 fs>1.1rem ta>c m>0">made by cleveranomaly.</p>
-
-      <div class="ta>c pt>10px">
-        <a href="https://github.com/cleveranomaly"><img class="w>40px h>40px px>5px" src="./static/png/github.png"></a>
-        <a href="https://reddit.com/u/cleveranomaly"><img class="w>40px h>40px px>5px" src="./static/png/reddit.png"></a>
-      </div>
-    </div>
+    </footer>
   </body>
 </html>
